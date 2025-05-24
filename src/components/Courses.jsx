@@ -1,16 +1,35 @@
-import { useState, useEffect } from 'react';
-import { getFeaturedCourses } from '../firebase';
+import { useState } from 'react';
 
 export default function Courses() {
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    const loadCourses = async () => {
-      const featuredCourses = await getFeaturedCourses();
-      setCourses(featuredCourses);
-    };
-    loadCourses();
-  }, []);
+  const staticCourses = [
+    {
+      id: 1,
+      title: 'HSC Physics 1st Paper',
+      thumbnail: 'https://images.unsplash.com/photo-1632571401005-458e9d244591',
+      rating: 4.8,
+      reviews: 350,
+      instructor: 'Dr. Rahman',
+      price: '১২৯৯৳'
+    },
+    {
+      id: 2,
+      title: 'HSC Chemistry Complete',
+      thumbnail: 'https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6',
+      rating: 4.9,
+      reviews: 280,
+      instructor: 'Prof. Karim',
+      price: '১৪৯৯৳'
+    },
+    {
+      id: 3,
+      title: 'English Grammar Mastery',
+      thumbnail: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d',
+      rating: 4.7,
+      reviews: 420,
+      instructor: 'Sarah Rahman',
+      price: '৯৯৯৳'
+    }
+  ];
 
   return (
     <section className="py-16 bg-white">
@@ -18,7 +37,7 @@ export default function Courses() {
         <h2 className="text-3xl font-bold text-center mb-12">জনপ্রিয় কোর্সসমূহ</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
+          {staticCourses.map((course) => (
             <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img src={course.thumbnail} alt={course.title} className="w-full h-48 object-cover" />
               <div className="p-6">
